@@ -1,11 +1,17 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class animationStateController : MonoBehaviour
 {
-  Animator animator;
+  public Animator animator;
+
+  public Transform attackPoint;
+  public LayerMask enemyLayers;
+
+  public float attackRange = 0.5f;
+  public int attackDamage = 50;
 
   void Start()
   {
@@ -18,7 +24,6 @@ public class animationStateController : MonoBehaviour
     var keyboard = Keyboard.current;
 
     bool isWalking = animator.GetBool("isWalking");
-    //bool isJumping = animator.GetBool("isJumping");
     bool isAttacking = animator.GetBool("isAttacking");
     bool isTurningL = animator.GetBool("isTurningL");
     bool isTurningR = animator.GetBool("isTurningR");
@@ -30,7 +35,6 @@ public class animationStateController : MonoBehaviour
     bool sPressed = keyboard.sKey.isPressed; //duck
     bool dPressed = keyboard.dKey.isPressed; //turn right
     bool iPressed = keyboard.iKey.isPressed; //attack
-    //bool spacePressed = keyboard.spaceKey.isPressed; //jump
 
     if(keyboard != null)
     {
@@ -45,20 +49,11 @@ public class animationStateController : MonoBehaviour
       {
         animator.SetBool("isWalking", false);
       }
-      /*
-      if(!isJumping && spacePressed)
-      {
-        animator.SetBool("isJumping", true);
-      }
 
-      if(isJumping && !spacePressed)
-      {
-        animator.SetBool("isJumping", false);
-      }
-      */
+      //  Attack Call  //
       if(!isAttacking && iPressed)
       {
-        animator.SetBool("isAttacking", true);
+        Attack();
       }
 
       if(isAttacking && !iPressed)
@@ -95,7 +90,35 @@ public class animationStateController : MonoBehaviour
         animator.SetBool("isDucking", false);
       }
 
+
   }
 
   }
+  // ATTACK - SYSTEM //
+  void Attack()
+  {
+    // play an attack animation
+    animator.SetBool("isAttacking", true);
+
+    // Detect enemies in range of attack
+    Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
+
+    // Damage them
+    foreach(Collider enemy in hitEnemies)
+    {
+      enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+      Debug.Log("We hit" + enemy.name);
+    }
+  }
+
 }
+/*
+void onDrawGizmosSelected()
+{
+
+  if (attackPoint == null)
+      return;
+
+  Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+}
+*/
