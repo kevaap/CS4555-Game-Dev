@@ -11,6 +11,8 @@ public class animationStateController : MonoBehaviour
   public LayerMask enemyLayers;
 
   public float attackRange = 0.5f;
+
+  // Player stats
   public int attackDamage = 50;
 
   void Start()
@@ -107,7 +109,6 @@ public class animationStateController : MonoBehaviour
     foreach(Collider enemy in hitEnemies)
     {
       enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
-      Debug.Log("We hit" + enemy.name);
     }
   }
 
