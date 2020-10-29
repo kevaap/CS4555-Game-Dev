@@ -13,7 +13,7 @@ public class animationStateController : MonoBehaviour
   public float attackRange = 0.5f;
 
   // Player stats
-  public int attackDamage = 50;
+  public float attackDamage = 50f;
 
   void Start()
   {
