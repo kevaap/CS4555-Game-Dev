@@ -21021,14 +21021,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 599289396}
-  speed: 5
-  gravity: -9.81
-  jumpHeight: 3
-  groundCheck: {fileID: 1807977879}
-  groundDistance: 0.4
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!143 &599289396
 CharacterController:
   m_ObjectHideFlags: 0
@@ -30341,7 +30333,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400080, guid: 0e8915349da353f4d8bc41bdc089faad, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.29
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400080, guid: 0e8915349da353f4d8bc41bdc089faad, type: 3}
       propertyPath: m_LocalPosition.z

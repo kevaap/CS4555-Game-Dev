@@ -6,7 +6,7 @@ public class playerMovement : MonoBehaviour
     public CharacterController controller;
 
     float speed = 2.5f;
-    float speedRotate = 50.0f;
+    float speedRotate = 75.0f;
 
     // Update is called once per frame
     void Update()
