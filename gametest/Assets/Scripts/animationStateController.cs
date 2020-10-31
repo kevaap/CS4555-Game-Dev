@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.UI;
 public class animationStateController : MonoBehaviour
 {
+  [SerializeField] Text attackAmount;
+
   public Animator animator;
 
   public Transform attackPoint;
@@ -18,10 +20,23 @@ public class animationStateController : MonoBehaviour
   void Start()
   {
       animator = GetComponent<Animator>();
+
+      //playerStats = GetComponent<CharacterStats>();
+
+      SetStats();
+
+  }
+
+  // UI - system //
+  void SetStats()
+  {
+    attackAmount.text = attackDamage.ToString();
+
   }
 
   void Update()
   {
+    SetStats();
 
     var keyboard = Keyboard.current;
 
@@ -52,7 +67,7 @@ public class animationStateController : MonoBehaviour
         animator.SetBool("isWalking", false);
       }
 
-      //  Attack Call  //
+      //  Attack - Call  //
       if(!isAttacking && iPressed)
       {
         Attack();
@@ -109,7 +124,10 @@ public class animationStateController : MonoBehaviour
     foreach(Collider enemy in hitEnemies)
     {
       enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+
     }
+
+
   }
 
 }

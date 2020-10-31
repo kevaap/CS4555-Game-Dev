@@ -7,16 +7,17 @@ public class powerAttack : MonoBehaviour
     //public GameObject pickupEffect;
 
     public int multiplier = 2;
+    public float duration = 15f;
 
     void OnTriggerEnter (Collider other)
     {
       if (other.CompareTag("Player"))
       {
-        Pickup(other);
+        StartCoroutine( Pickup(other) );
       }
     }
 
-    void Pickup(Collider player)
+    IEnumerator Pickup(Collider player)
     {
       // spawn a cool effect
       //Instantiate(pickupEffect, transform.position, transform.rotation);
@@ -24,6 +25,14 @@ public class powerAttack : MonoBehaviour
       // Apply effect to the Player
       animationStateController stats = player.GetComponent<animationStateController>();
       stats.attackDamage *= multiplier;
+
+      GetComponent<MeshRenderer>().enabled = false;
+      GetComponent<Collider>().enabled = false;
+
+      // Wait x amount of seconds
+      yield return new WaitForSeconds(duration);
+      // Reverse the effect on our Player
+      stats.attackDamage /= multiplier;
 
       // Remove power up object
       Destroy(gameObject);
