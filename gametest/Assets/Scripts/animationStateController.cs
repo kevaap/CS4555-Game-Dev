@@ -6,18 +6,17 @@ using UnityEngine.UI;
 
 public class animationStateController : MonoBehaviour
 {
-  // UI
+  // Enemy-countdown
   [SerializeField] Text countdown;
   public float currentEnemy = 6f;
 
-  // icon
+  // Power-icon
   [SerializeField] RawImage customImage;
 
   public Animator animator;
 
   public Transform attackPoint;
   public LayerMask enemyLayers;
-
   public float attackRange = 0.5f;
 
   // Player stats
@@ -25,20 +24,10 @@ public class animationStateController : MonoBehaviour
 
   void Start()
   {
-  countdown.text = currentEnemy.ToString();
-  animator = GetComponent<Animator>();
-
-
-      //SetStats();
+    //countdown.text = currentEnemy.ToString();
+    animator = GetComponent<Animator>();
   }
 
-  // UI - SYSTEM //
-  /*
-  void SetStats()
-  {
-    healthAmaount.text = attackDamage.ToString();
-  }
-  */
   void Update()
   {
     countdown.text = currentEnemy.ToString() + " robots";
@@ -46,19 +35,18 @@ public class animationStateController : MonoBehaviour
     {
       countdown.text = currentEnemy.ToString() + " robot";
     }
-    //SetStats();
 
     if(attackDamage > 50)
     {
       customImage.enabled = true;
 
     }
-
     if(attackDamage == 50)
     {
       customImage.enabled = false;
     }
 
+    // Teddy movement and animation
     var keyboard = Keyboard.current;
 
     bool isWalking = animator.GetBool("isWalking");
@@ -127,9 +115,7 @@ public class animationStateController : MonoBehaviour
       {
         animator.SetBool("isDucking", false);
       }
-
-
-  }
+    }
 
   }
   // ATTACK - SYSTEM //
@@ -147,13 +133,11 @@ public class animationStateController : MonoBehaviour
       enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
 
       countdown.enabled = true;
-
       if(enemy.GetComponent<Enemy>().currentHealth == 0)
       {
         currentEnemy--;
         countdown.text = currentEnemy.ToString();
       }
-
 
     }
   }
