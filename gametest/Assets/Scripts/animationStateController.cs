@@ -30,11 +30,15 @@ public class animationStateController : MonoBehaviour
 
   void Update()
   {
-    countdown.text = currentEnemy.ToString() + " robots";
+    countdown.text = "- Disassemble " + currentEnemy.ToString() + " Robots";
     if(currentEnemy == 1)
     {
-      countdown.text = currentEnemy.ToString() + " robot";
+      countdown.text = "- Disassemble " + currentEnemy.ToString() + " Robot";
     }
+    else if (currentEnemy == 0)
+        {
+            countdown.text = "OBJECTIVE COMPLETE";
+        }
 
     if(attackDamage > 50)
     {
