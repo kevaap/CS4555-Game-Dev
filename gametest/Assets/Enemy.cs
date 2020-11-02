@@ -5,6 +5,12 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
+    /*
+    [SerializeField] Text countdown;
+    public float currentEnemy = 6f;
+    //public int remainingEnemy;
+    */
+
     public Animator animator;
 
     public float maxHealth;
@@ -15,12 +21,16 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+
       currentHealth = maxHealth;
       slider.value = CalculateHealth();
     }
 
     void Update()
     {
+
+      //countdown.text = currentEnemy.ToString();
+
       slider.value = CalculateHealth();
 
       if(currentHealth < maxHealth)
@@ -56,7 +66,11 @@ public class Enemy : MonoBehaviour
 
       if (currentHealth <= 0)
       {
+        //currentEnemy--;
+        //countdown.text = currentEnemy.ToString("0");
+
         Destroy(healthBarUI, 1.0f);
+
       }
 
       // Play hurt animation
@@ -68,7 +82,7 @@ public class Enemy : MonoBehaviour
       }
     }
 
-    void Die()
+    public void Die()
     {
       //Die animation
       animator.SetBool("isDead", true);

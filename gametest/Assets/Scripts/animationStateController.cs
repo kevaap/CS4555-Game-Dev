@@ -2,9 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class animationStateController : MonoBehaviour
 {
+  // UI
+  [SerializeField] Text countdown;
+  public float currentEnemy = 6f;
+
+  // icon
+  [SerializeField] RawImage customImage;
+
   public Animator animator;
 
   public Transform attackPoint;
@@ -17,11 +25,39 @@ public class animationStateController : MonoBehaviour
 
   void Start()
   {
-      animator = GetComponent<Animator>();
+  countdown.text = currentEnemy.ToString();
+  animator = GetComponent<Animator>();
+
+
+      //SetStats();
   }
 
+  // UI - SYSTEM //
+  /*
+  void SetStats()
+  {
+    healthAmaount.text = attackDamage.ToString();
+  }
+  */
   void Update()
   {
+    countdown.text = currentEnemy.ToString() + " robots";
+    if(currentEnemy == 1)
+    {
+      countdown.text = currentEnemy.ToString() + " robot";
+    }
+    //SetStats();
+
+    if(attackDamage > 50)
+    {
+      customImage.enabled = true;
+
+    }
+
+    if(attackDamage == 50)
+    {
+      customImage.enabled = false;
+    }
 
     var keyboard = Keyboard.current;
 
@@ -109,17 +145,17 @@ public class animationStateController : MonoBehaviour
     foreach(Collider enemy in hitEnemies)
     {
       enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+
+      countdown.enabled = true;
+
+      if(enemy.GetComponent<Enemy>().currentHealth == 0)
+      {
+        currentEnemy--;
+        countdown.text = currentEnemy.ToString();
+      }
+
+
     }
   }
 
 }
-/*
-void onDrawGizmosSelected()
-{
-
-  if (attackPoint == null)
-      return;
-
-  Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-}
-*/
