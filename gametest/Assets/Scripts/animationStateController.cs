@@ -8,28 +8,72 @@ public class animationStateController : MonoBehaviour
 {
   // Enemy-countdown
   [SerializeField] Text countdown;
+  // Total enemy_robots
   public float currentEnemy = 6f;
 
   // Power-icon
   [SerializeField] RawImage customImage;
 
+  // Jump-icon
+  [SerializeField] RawImage iconJump;
+
   public Animator animator;
 
-  public Transform attackPoint;
+  // variables to reference Teddy Clap-Attack
+  public Transform attackPoint; // -> Teddy's hand
   public LayerMask enemyLayers;
   public float attackRange = 0.5f;
 
   // Player stats
   public float attackDamage = 50f;
 
+  // playerMovement  TRANSFER SCRIPT //
+  public CharacterController controller;
+
+  public float speed = 5f;
+  public float gravity = -9.81f;
+  public float jumpHeight = 3f;
+
+  public Transform groundCheck;
+  public float groundDistance = 0.4f;
+  public LayerMask groundMask;
+
+  Vector3 velocity;
+  bool isGrounded;
+  // TRANSFER SCRIPT ENDS
+
   void Start()
   {
-    //countdown.text = currentEnemy.ToString();
     animator = GetComponent<Animator>();
   }
 
   void Update()
   {
+    // playerMovement TRANSFER SCRIPT //
+    isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
+    if(isGrounded && velocity.y < 0)
+    {
+      velocity.y = -2f;
+    }
+    float x = Input.GetAxis("Horizontal");
+    float z = Input.GetAxis("Vertical");
+
+    Vector3 move = transform.right * x + transform.forward * z;
+
+    //controller.Move(move * speed * Time.deltaTime);
+
+    if(Input.GetButtonDown("Jump") && isGrounded)
+    {
+      velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+    }
+
+    velocity.y += gravity * Time.deltaTime;
+
+    controller.Move(velocity * Time.deltaTime);
+    // TRANSFER SCRIPT ENDS
+
+    // Enemy_robots Countdown
     countdown.text = "- Disassemble " + currentEnemy.ToString() + " Robots";
     if(currentEnemy == 1)
     {
@@ -40,17 +84,27 @@ public class animationStateController : MonoBehaviour
             countdown.text = "OBJECTIVE COMPLETE";
         }
 
+    // if statement to trigger Powerup-Attack icon
     if(attackDamage > 50)
     {
       customImage.enabled = true;
-
     }
     if(attackDamage == 50)
     {
       customImage.enabled = false;
     }
 
-    // Teddy movement and animation
+    // if statement to trigger Powerup-Jump icon
+    if(jumpHeight > 3)
+    {
+      iconJump.enabled = true;
+    }
+    if(jumpHeight == 3)
+    {
+      iconJump.enabled = false;
+    }
+
+    // Teddy basic movement and animation
     var keyboard = Keyboard.current;
 
     bool isWalking = animator.GetBool("isWalking");
@@ -137,6 +191,9 @@ public class animationStateController : MonoBehaviour
       enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
 
       countdown.enabled = true;
+
+      // To subtract enemies form our currentEnemy we make
+      // sure their currentHealt hits 0.
       if(enemy.GetComponent<Enemy>().currentHealth == 0)
       {
         currentEnemy--;

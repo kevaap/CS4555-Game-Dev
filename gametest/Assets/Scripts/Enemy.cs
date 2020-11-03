@@ -7,9 +7,12 @@ public class Enemy : MonoBehaviour
 {
     public Animator animator;
 
+    // Enemy stats
     public float maxHealth;
     public float currentHealth;
 
+    // UI objects
+    // to display enemy healt
     public GameObject healthBarUI;
     public Slider slider;
 

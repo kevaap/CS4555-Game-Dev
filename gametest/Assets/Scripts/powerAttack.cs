@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class powerAttack : MonoBehaviour
 {
     public int multiplier = 2;
-    public float duration = 10f;
+    public float duration = 30f;
 
     void OnTriggerEnter (Collider other)
     {
@@ -16,6 +16,8 @@ public class powerAttack : MonoBehaviour
       }
     }
 
+    // we use IEnumerator to make the sphere
+    // dissapear after its pickup
     IEnumerator Pickup(Collider player)
     {
       // spawn a cool effect
