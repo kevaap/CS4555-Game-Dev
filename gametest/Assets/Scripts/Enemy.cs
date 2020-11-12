@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
+    public GameObject bulletPrefab;
+    
     public Animator animator;
 
     // Enemy stats
