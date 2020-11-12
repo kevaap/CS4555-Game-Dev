@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    public GameObject bulletPrefab;
-    
+    //public GameObject bulletPrefab;
+
     public Animator animator;
 
     // Enemy stats
@@ -60,7 +60,7 @@ public class Enemy : MonoBehaviour
       // Play hurt animation
       animator.SetTrigger("Hurt");
 
-      if(currentHealth <= 0)
+      if(currentHealth == 0)
       {
         Die();
       }

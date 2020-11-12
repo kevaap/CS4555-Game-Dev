@@ -4,28 +4,33 @@ using UnityEngine;
 
 public class EnemyWeapon : MonoBehaviour
 {
+  public Enemy enemyStats;
+
   public GameObject bulletPrefab;
 
   public Transform bulletSpawn;
 
-  public float bulletSpeed = 30f;
+  public float bulletSpeed = 15f;
 
   public float lifeTime = 3f;
 
   void Start()
   {
-
+    enemyStats = GetComponent<Enemy>();
   }
 
   void Update()
   {
-    /*
-    if (Input.GetKeyDown(KeyCode.F))
-    {
+      if(enemyStats.currentHealth > 0)
+      {
       Fire();
-    }
-    */
-    Fire();
+      }
+      else if(enemyStats.currentHealth == 0)
+      {
+        //Debug.Log("Working");
+        //Destroy(gameObject);
+        Destroy(bulletPrefab);
+      }
   }
 
   private void Fire()

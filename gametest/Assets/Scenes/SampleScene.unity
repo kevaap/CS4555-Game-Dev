@@ -14499,7 +14499,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f0680b0496b47eead610342f58dd58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 0}
   animator: {fileID: 238196218}
   maxHealth: 700
   currentHealth: 0
@@ -16147,7 +16146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f0680b0496b47eead610342f58dd58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 0}
   animator: {fileID: 323211178}
   maxHealth: 500
   currentHealth: 0
@@ -20287,7 +20285,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f0680b0496b47eead610342f58dd58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 0}
   animator: {fileID: 554330823}
   maxHealth: 200
   currentHealth: 0
@@ -24714,7 +24711,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f0680b0496b47eead610342f58dd58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 0}
   animator: {fileID: 812873586}
   maxHealth: 100
   currentHealth: 0
@@ -26369,7 +26365,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f0680b0496b47eead610342f58dd58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 0}
   animator: {fileID: 933106439}
   maxHealth: 100
   currentHealth: 0
@@ -47674,7 +47669,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f0680b0496b47eead610342f58dd58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 0}
   animator: {fileID: 2125290302}
   maxHealth: 300
   currentHealth: 0
@@ -47717,9 +47711,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba45e6a3c080847f69a53a8230c0add1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyStats: {fileID: 2125290300}
   bulletPrefab: {fileID: 4879523332311034882}
   bulletSpawn: {fileID: 645251496}
-  bulletSpeed: 30
+  bulletSpeed: 15
   lifeTime: 3
 --- !u!1 &2125445242
 GameObject:
@@ -48311,6 +48306,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: bullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634073739547665211, guid: d5723c424d8444e90908698884eb7be1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5723c424d8444e90908698884eb7be1, type: 3}
