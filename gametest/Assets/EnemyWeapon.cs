@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyWeapon : MonoBehaviour
 {
-  public Enemy enemyStats;
+  //public Enemy enemyStats;
 
   public GameObject bulletPrefab;
 
@@ -12,25 +12,28 @@ public class EnemyWeapon : MonoBehaviour
 
   public float bulletSpeed = 15f;
 
-  public float lifeTime = 3f;
+  public float lifeTime = 10f;
 
   void Start()
   {
-    enemyStats = GetComponent<Enemy>();
+    //enemyStats = GetComponent<Enemy>();
   }
 
   void Update()
   {
+      Fire();
+      /*
       if(enemyStats.currentHealth > 0)
       {
       Fire();
       }
       else if(enemyStats.currentHealth == 0)
       {
-        //Debug.Log("Working");
+        Debug.Log("Working");
         //Destroy(gameObject);
-        Destroy(bulletPrefab);
+        //Destroy(bulletPrefab);
       }
+      */
   }
 
   private void Fire()
@@ -55,6 +58,8 @@ public class EnemyWeapon : MonoBehaviour
   {
     yield return new WaitForSeconds(delay);
 
-    Destroy(bullet);
+    //Destroy(bullet);
+
   }
+
 }

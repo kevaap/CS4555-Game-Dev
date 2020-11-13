@@ -5,7 +5,16 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    //public GameObject bulletPrefab;
+    // enemy_weapon
+    public GameObject bulletPrefab;
+
+    public Transform bulletSpawn;
+
+    public float bulletSpeed = 15f;
+
+    //public float lifeTime = 10f;
+    public float lifeTime = 2f;
+
 
     public Animator animator;
 
@@ -27,6 +36,8 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+      Fire();
+
       slider.value = CalculateHealth();
 
       if(currentHealth < maxHealth)
@@ -40,6 +51,36 @@ public class Enemy : MonoBehaviour
       }
 
     }
+
+    void Fire()
+    {
+      var bullet = (GameObject)Instantiate(bulletPrefab);
+
+      Physics.IgnoreCollision(bullet.GetComponent<Collider>(),
+        bulletSpawn.parent.GetComponent<Collider>());
+
+      bullet.transform.position = bulletSpawn.position;
+
+      Vector3 rotation = bullet.transform.rotation.eulerAngles;
+
+      bullet.transform.rotation = Quaternion.Euler(rotation.x, transform.eulerAngles.y, rotation.z);
+
+      bullet.GetComponent<Rigidbody>().AddForce(bulletSpawn.forward * bulletSpeed, ForceMode.Impulse);
+
+      Destroy(bullet, lifeTime);
+      //StartCoroutine(DestroyBulletAfterTime(bullet, lifeTime));
+    }
+
+    /*
+    private IEnumerator DestroyBulletAfterTime(GameObject bullet, float delay)
+    {
+      yield return new WaitForSeconds(delay);
+
+
+      Destroy(bullet);
+    }
+    */
+
 
     float CalculateHealth()
     {
