@@ -13997,7 +13997,7 @@ MonoBehaviour:
   bulletSpeed: 10
   lifeTime: 2
   animator: {fileID: 234561637}
-  maxHealth: 100
+  maxHealth: 1000
   currentHealth: 0
   healthBarUI: {fileID: 2068227516}
   slider: {fileID: 1475694835}
@@ -14012,8 +14012,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.7128173, y: 1.4287642, z: 1.9502579}
+  m_Center: {x: -0.30562082, y: 2.569386, z: -0.04346171}
 --- !u!1 &244807234
 GameObject:
   m_ObjectHideFlags: 0
@@ -41780,6 +41780,58 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 264152760}
     m_Modifications:
+    - target: {fileID: 100000, guid: 08a6fb37a2f216e47bdfa76dcbe8f35e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 08a6fb37a2f216e47bdfa76dcbe8f35e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 08a6fb37a2f216e47bdfa76dcbe8f35e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 08a6fb37a2f216e47bdfa76dcbe8f35e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 08a6fb37a2f216e47bdfa76dcbe8f35e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 08a6fb37a2f216e47bdfa76dcbe8f35e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: 08a6fb37a2f216e47bdfa76dcbe8f35e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100014, guid: 08a6fb37a2f216e47bdfa76dcbe8f35e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100016, guid: 08a6fb37a2f216e47bdfa76dcbe8f35e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100018, guid: 08a6fb37a2f216e47bdfa76dcbe8f35e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100020, guid: 08a6fb37a2f216e47bdfa76dcbe8f35e, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100022, guid: 08a6fb37a2f216e47bdfa76dcbe8f35e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100024, guid: 08a6fb37a2f216e47bdfa76dcbe8f35e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 100026, guid: 08a6fb37a2f216e47bdfa76dcbe8f35e, type: 3}
       propertyPath: m_Name
       value: Robot#2
@@ -41794,7 +41846,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400026, guid: 08a6fb37a2f216e47bdfa76dcbe8f35e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -25.957258
+      value: -26.02
       objectReference: {fileID: 0}
     - target: {fileID: 400026, guid: 08a6fb37a2f216e47bdfa76dcbe8f35e, type: 3}
       propertyPath: m_LocalPosition.z
