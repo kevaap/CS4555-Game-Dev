@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class combat : MonoBehaviour
 {
@@ -33,6 +34,14 @@ public class combat : MonoBehaviour
       {
         health = maxHealth;
       }
+
+      //   Game Over    //
+      // Restar Scene  //
+
+      if(health == 0)
+      {
+        RestartScene();
+      }
     }
 
     float CalculateHealth()
@@ -51,5 +60,11 @@ public class combat : MonoBehaviour
         health = 0;
         //Debug.Log("With God anything is possible!");
       }
+    }
+
+    public void RestartScene()
+    {
+      Scene thisScene = SceneManager.GetActiveScene();
+      SceneManager.LoadScene(thisScene.name);
     }
 }
