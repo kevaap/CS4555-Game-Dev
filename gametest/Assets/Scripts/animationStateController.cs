@@ -100,7 +100,7 @@ public class animationStateController : MonoBehaviour
     {
       iconJump.enabled = true;
     }
-    if(jumpHeight == 3)
+    if(jumpHeight < 3)
     {
       iconJump.enabled = false;
     }

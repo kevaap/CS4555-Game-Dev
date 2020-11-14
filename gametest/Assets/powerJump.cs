@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class powerJump : MonoBehaviour
 {
 
-  public float multiplier = 8f;
+  public float multiplier = 2f;
   public float duration = 30f;
 
   void OnTriggerEnter (Collider other)
