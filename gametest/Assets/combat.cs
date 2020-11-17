@@ -58,7 +58,6 @@ public class combat : MonoBehaviour
       if(health <= 0)
       {
         health = 0;
-        //Debug.Log("With God anything is possible!");
       }
     }
 

@@ -8,7 +8,6 @@ public class BulletBehavior : MonoBehaviour
 
   void OnTriggerEnter(Collider other)
   {
-    //Debug.Log("hit " + other.name + "!");
     if(other.CompareTag("Player"))
     {
     Pickup(other);
@@ -26,24 +25,4 @@ public class BulletBehavior : MonoBehaviour
     }
  }
 
- /*
-    var hit = collision.gameObject;
-    var hitPlayer = hit.GetComponent<Enemy>();
-    if(hitPlayer != null)
-    {
-      var combat = hit.GetComponent<combat>();
-      combat.TakeDamage(damage);
-      Debug.Log("hit ");
-
-      Destroy(gameObject);
-      */
-
-  /*
-  private void OnTriggerEnter(Collider other)
-  {
-    //print("hit " + other.name + "!");
-    Debug.Log("hit " + other.name + "!");
-
-    Destroy(gameObject);
-  }
-  */
+ 

@@ -31,7 +31,7 @@ public class animationStateController : MonoBehaviour
   public CharacterController controller;//
                                         //
   public float speed = 5f;              //
-  float speedRotate = 100.0f;
+  float speedRotate = 100.0f;           //
   public float gravity = -9.81f;        //
   public float jumpHeight = 3f;         //
                                         //
@@ -135,7 +135,7 @@ public class animationStateController : MonoBehaviour
             }
         }
 
-        bool isWalking = animator.GetBool("isWalking");
+    bool isWalking = animator.GetBool("isWalking");
     bool isAttacking = animator.GetBool("isAttacking");
     bool isTurningL = animator.GetBool("isTurningL");
     bool isTurningR = animator.GetBool("isTurningR");
@@ -214,21 +214,32 @@ public class animationStateController : MonoBehaviour
     Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
 
     // Damage them
+
     foreach(Collider enemy in hitEnemies)
     {
-      enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
-
-      countdown.enabled = true;
-
-      // To subtract enemies form our currentEnemy we make
-      // sure their currentHealt hits 0.
-      if(enemy.GetComponent<Enemy>().currentHealth == 0)
+      if(enemy.CompareTag("enemyAI"))
       {
-        currentEnemy--;
-        countdown.text = currentEnemy.ToString();
+        enemy.GetComponent<EnemyAI>().TakeDamage(attackDamage);
+      }
+      if(enemy.CompareTag("enemy"))
+      {
+        enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+
+        countdown.enabled = true;
+
+        // To subtract enemies form our currentEnemy we make
+        // sure their currentHealt hits 0.
+        if(enemy.GetComponent<Enemy>().currentHealth == 0)
+        {
+          currentEnemy--;
+          countdown.text = currentEnemy.ToString();
+        }
       }
 
+
+
     }
+
   }
 
 }
