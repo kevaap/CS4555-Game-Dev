@@ -11,10 +11,10 @@ public class Enemy : MonoBehaviour
 
     public Transform bulletSpawn;
 
-    public float bulletSpeed = 15f;
+    public float bulletSpeed = 5f;
 
     //public float lifeTime = 10f;
-    public float lifeTime = 2f;
+    public float lifeTime = 1f;
 
 
     public Animator animator;

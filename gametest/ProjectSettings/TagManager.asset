@@ -7,6 +7,10 @@ TagManager:
   - reach
   - enemy
   - enemyAI
+  - Powerup
+  - Lever
+  - BossZone
+  - Floor
   layers:
   - Default
   - TransparentFX

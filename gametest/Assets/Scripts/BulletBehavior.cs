@@ -6,6 +6,15 @@ public class BulletBehavior : MonoBehaviour
 {
   public float damage;
 
+    public AudioClip deathSound;
+    public AudioSource audioS;
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        audioS.PlayOneShot(deathSound);
+        Destroy(gameObject);
+    }
+
   void OnTriggerEnter(Collider other)
   {
     if(other.CompareTag("Player"))
