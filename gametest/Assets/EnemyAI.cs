@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
+
 
 public class EnemyAI : MonoBehaviour
 {
@@ -42,7 +44,13 @@ public class EnemyAI : MonoBehaviour
 
   public Slider slider;
 
+  public GameObject completeLevelUI; //display: level complete! panel
 
+  public void CompleteLevel()
+  {
+   completeLevelUI.SetActive(true);
+    //Invoke(RestartScene(), 5f);
+  }
   void OnDrawGizmosSelected()
   {
     Gizmos.color = Color.red;
@@ -144,6 +152,7 @@ public class EnemyAI : MonoBehaviour
     if(currentHealth == 0)
     {
       Die();
+      CompleteLevel();
     }
   }
 
@@ -156,5 +165,11 @@ public class EnemyAI : MonoBehaviour
     GetComponent<Collider>().enabled = false;
     this.enabled = false;
   }
+
+  public void RestartScene()
+    {
+      Scene thisScene = SceneManager.GetActiveScene();
+      SceneManager.LoadScene(thisScene.name);
+    }
 
 }
